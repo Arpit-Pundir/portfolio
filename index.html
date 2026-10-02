@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Arpit Pundir — CSE student at AKGEC, software development portfolio and project dashboard." />
   <title>Arpit Pundir | Developer Dashboard</title>
+
   <style>
     :root{
       --bg:#07111f;
@@ -17,8 +18,11 @@
       --border:rgba(255,255,255,.10);
       --shadow:0 18px 50px rgba(0,0,0,.28);
     }
+
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -29,299 +33,1137 @@
       color:var(--text);
       line-height:1.55;
     }
-    a{color:inherit;text-decoration:none}
-    .shell{width:min(1180px,92vw);margin:0 auto}
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .shell{
+      width:min(1180px,92vw);
+      margin:0 auto;
+    }
+
     nav{
-      position:sticky;top:0;z-index:10;
+      position:sticky;
+      top:0;
+      z-index:10;
       backdrop-filter:blur(18px);
       background:rgba(7,17,31,.76);
       border-bottom:1px solid var(--border);
     }
+
     .nav-inner{
-      min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
-    .brand{font-weight:800;letter-spacing:.2px}
-    .brand span{color:var(--accent)}
-    .nav-links{display:flex;gap:18px;color:var(--muted);font-size:.94rem}
-    .nav-links a:hover{color:var(--text)}
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .brand span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .nav-links a:hover{
+      color:var(--text);
+    }
+
     .hero{
       padding:72px 0 34px;
-      display:grid;grid-template-columns:1.45fr .8fr;gap:28px;align-items:stretch;
+      display:grid;
+      grid-template-columns:1.45fr .8fr;
+      gap:28px;
+      align-items:stretch;
     }
-    .hero-card,.profile-card,.card{
+
+    .hero-card,
+    .profile-card,
+    .card{
       border:1px solid var(--border);
-      background:linear-gradient(180deg,rgba(17,36,58,.86),rgba(13,27,42,.88));
+      background:linear-gradient(
+        180deg,
+        rgba(17,36,58,.86),
+        rgba(13,27,42,.88)
+      );
       box-shadow:var(--shadow);
       border-radius:24px;
     }
-    .hero-card{padding:42px}
+
+    .hero-card{
+      padding:42px;
+    }
+
     .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;
-      color:var(--accent2);font-weight:750;font-size:.86rem;
-      text-transform:uppercase;letter-spacing:.12em;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--accent2);
+      font-weight:750;
+      font-size:.86rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
     }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 18px var(--accent2)}
-    h1{font-size:clamp(2.7rem,7vw,5.7rem);line-height:.95;margin:18px 0 20px;letter-spacing:-.055em}
-    .subtitle{font-size:1.12rem;color:var(--muted);max-width:760px}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 18px var(--accent2);
+    }
+
+    h1{
+      font-size:clamp(2.7rem,7vw,5.7rem);
+      line-height:.95;
+      margin:18px 0 20px;
+      letter-spacing:-.055em;
+    }
+
+    .subtitle{
+      font-size:1.12rem;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 16px;border-radius:13px;border:1px solid var(--border);
-      font-weight:750;transition:.2s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:13px;
+      border:1px solid var(--border);
+      font-weight:750;
+      transition:.2s ease;
     }
-    .btn.primary{background:var(--accent);color:#04101a;border-color:transparent}
-    .btn.secondary{background:rgba(255,255,255,.04)}
-    .btn:hover{transform:translateY(-2px)}
-    .profile-card{padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+
+    .btn.primary{
+      background:var(--accent);
+      color:#04101a;
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .profile-card{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
     .avatar{
-      width:92px;height:92px;border-radius:22px;
+      width:92px;
+      height:92px;
+      border-radius:22px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#04101a;font-size:2rem;font-weight:900;
-      display:grid;place-items:center;
+      color:#04101a;
+      font-size:2rem;
+      font-weight:900;
+      display:grid;
+      place-items:center;
     }
-    .profile-card h3{margin:18px 0 4px;font-size:1.45rem}
-    .muted{color:var(--muted)}
-    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-    .mini{padding:14px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.025)}
-    .mini b{display:block;font-size:1.08rem}
-    section{padding:38px 0}
-    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:18px}
-    .section-head h2{font-size:1.75rem;margin:0}
-    .section-head p{margin:0;color:var(--muted)}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .stat{padding:18px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.025)}
-    .stat .value{font-size:1.75rem;font-weight:850}
-    .stat .label{color:var(--muted);font-size:.92rem}
-    .skill-wrap{display:flex;flex-wrap:wrap;gap:10px}
+
+    .profile-card h3{
+      margin:18px 0 4px;
+      font-size:1.45rem;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .mini{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:15px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .mini b{
+      display:block;
+      font-size:1.08rem;
+    }
+
+    section{
+      padding:38px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:end;
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      font-size:1.75rem;
+      margin:0;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .stat{
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .stat .value{
+      font-size:1.75rem;
+      font-weight:850;
+    }
+
+    .stat .label{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .skill-wrap{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
     .chip{
-      padding:9px 12px;border:1px solid var(--border);border-radius:999px;
-      background:rgba(255,255,255,.035);font-size:.92rem;
+      padding:9px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      font-size:.92rem;
     }
-    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
     .project{
-      min-height:250px;padding:22px;display:flex;flex-direction:column;
-      border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.025);
+      min-height:250px;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:rgba(255,255,255,.025);
     }
-    .project-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+
+    .project-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+    }
+
     .status{
-      padding:6px 9px;border-radius:999px;font-size:.76rem;font-weight:800;
-      background:rgba(105,214,255,.10);color:var(--accent);border:1px solid rgba(105,214,255,.18)
+      padding:6px 9px;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      background:rgba(105,214,255,.10);
+      color:var(--accent);
+      border:1px solid rgba(105,214,255,.18);
     }
-    .status.progress{color:#ffd179;background:rgba(255,209,121,.08);border-color:rgba(255,209,121,.18)}
-    .project h3{font-size:1.16rem;margin:0 0 10px}
-    .project p{color:var(--muted);margin:0 0 16px}
-    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
-    .tag{font-size:.76rem;padding:6px 8px;border-radius:8px;background:#07111f;border:1px solid var(--border);color:#c8d4e1}
-    .project-link{margin-top:16px;color:var(--accent);font-weight:750;font-size:.9rem}
-    .edu-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
-    .card{padding:24px}
-    .edu-row{display:flex;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--border)}
-    .edu-row:last-child{border-bottom:none}
-    .edu-row strong{display:block}
-    .score{font-weight:850;white-space:nowrap}
-    footer{padding:38px 0 58px;color:var(--muted);text-align:center}
-    .foot-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+
+    .project h3{
+      font-size:1.16rem;
+      margin:0 0 10px;
+    }
+
+    .project p{
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:auto;
+    }
+
+    .tag{
+      font-size:.76rem;
+      padding:6px 8px;
+      border-radius:8px;
+      background:#07111f;
+      border:1px solid var(--border);
+      color:#c8d4e1;
+    }
+
+    .project-link{
+      margin-top:16px;
+      color:var(--accent);
+      font-weight:750;
+      font-size:.9rem;
+    }
+
+    .project-actions{
+      display:flex;
+      gap:10px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .project-btn{
+      padding:9px 13px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      font-size:.85rem;
+      font-weight:750;
+      transition:.2s ease;
+      background:rgba(255,255,255,.035);
+    }
+
+    .primary-project-btn{
+      background:var(--accent);
+      color:#04101a;
+      border-color:transparent;
+    }
+
+    .project-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .edu-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr;
+      gap:16px;
+    }
+
+    .card{
+      padding:24px;
+    }
+
+    .edu-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding:15px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .edu-row:last-child{
+      border-bottom:none;
+    }
+
+    .edu-row strong{
+      display:block;
+    }
+
+    .score{
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    footer{
+      padding:38px 0 58px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .foot-links{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
     @media (max-width:900px){
-      .hero,.edu-grid{grid-template-columns:1fr}
-      .projects{grid-template-columns:repeat(2,1fr)}
-      .stats{grid-template-columns:repeat(2,1fr)}
+      .hero,
+      .edu-grid{
+        grid-template-columns:1fr;
+      }
+
+      .projects{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .stats{
+        grid-template-columns:repeat(2,1fr);
+      }
     }
+
     @media (max-width:620px){
-      .nav-links{display:none}
-      .hero{padding-top:38px}
-      .hero-card{padding:28px}
-      .projects,.stats{grid-template-columns:1fr}
-      .mini-grid{grid-template-columns:1fr 1fr}
-      .section-head{align-items:start;flex-direction:column}
+      .nav-links{
+        display:none;
+      }
+
+      .hero{
+        padding-top:38px;
+      }
+
+      .hero-card{
+        padding:28px;
+      }
+
+      .projects,
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .section-head{
+        align-items:start;
+        flex-direction:column;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <nav>
     <div class="shell nav-inner">
-      <div class="brand">Arpit<span>.</span></div>
+
+      <div class="brand">
+        Arpit<span>.</span>
+      </div>
+
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
       </div>
+
     </div>
   </nav>
 
+
   <main class="shell">
+
+    <!-- HERO -->
     <section class="hero" id="about">
+
       <div class="hero-card">
-        <div class="eyebrow"><span class="dot"></span> Open to software & web opportunities</div>
-        <h1>Arpit<br/>Pundir</h1>
-        <p class="subtitle">
-          B.Tech Computer Science & Engineering student at AKGEC, building practical web
-          applications and strengthening software-development fundamentals through C, C++,
-          Java, JavaScript, databases and the MERN ecosystem.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a class="btn secondary" href="https://in.linkedin.com/in/arpit-pundir-764128317" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <a class="btn secondary" href="#projects">View Projects ↓</a>
+
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Open to software & web opportunities
         </div>
+
+        <h1>
+          Arpit<br/>
+          Pundir
+        </h1>
+
+        <p class="subtitle">
+          B.Tech Computer Science & Engineering student at AKGEC,
+          building practical web applications and strengthening
+          software-development fundamentals through C, C++, Java,
+          JavaScript, databases and the MERN ecosystem.
+        </p>
+
+        <div class="cta">
+
+          <a
+            class="btn primary"
+            href="https://github.com/Arpit-Pundir"
+            target="_blank"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            class="btn secondary"
+            href="https://in.linkedin.com/in/arpit-pundir-764128317"
+            target="_blank"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a class="btn secondary" href="#projects">
+            View Projects ↓
+          </a>
+
+        </div>
+
       </div>
+
 
       <aside class="profile-card">
+
         <div>
-          <div class="avatar">AP</div>
-          <h3>Computer Science Student</h3>
-          <div class="muted">Ajay Kumar Garg Engineering College · 2024–2028</div>
+
+          <div class="avatar">
+            AP
+          </div>
+
+          <h3>
+            Computer Science Student
+          </h3>
+
+          <div class="muted">
+            Ajay Kumar Garg Engineering College · 2024–2028
+          </div>
+
         </div>
+
+
         <div class="mini-grid">
-          <div class="mini"><b>7</b><span class="muted">Projects shown</span></div>
-          <div class="mini"><b>8.84</b><span class="muted">Best Sem SGPA</span></div>
-          <div class="mini"><b>95.45%</b><span class="muted">Class X · ICSE</span></div>
-          <div class="mini"><b>88.6%</b><span class="muted">Class XII · ISC</span></div>
+
+          <div class="mini">
+            <b>7</b>
+            <span class="muted">
+              Projects shown
+            </span>
+          </div>
+
+          <div class="mini">
+            <b>8.84</b>
+            <span class="muted">
+              Best Sem SGPA
+            </span>
+          </div>
+
+          <div class="mini">
+            <b>95.45%</b>
+            <span class="muted">
+              Class X · ICSE
+            </span>
+          </div>
+
+          <div class="mini">
+            <b>88.6%</b>
+            <span class="muted">
+              Class XII · ISC
+            </span>
+          </div>
+
         </div>
+
       </aside>
+
     </section>
 
+
+    <!-- ACADEMICS -->
     <section>
+
       <div class="section-head">
-        <div><h2>Academic snapshot</h2><p>Semester-wise performance — no unofficial CGPA calculated.</p></div>
+
+        <div>
+
+          <h2>
+            Academic snapshot
+          </h2>
+
+          <p>
+            Semester-wise performance — no unofficial CGPA calculated.
+          </p>
+
+        </div>
+
       </div>
+
+
       <div class="stats">
-        <div class="stat"><div class="value">8.55</div><div class="label">Semester 1 SGPA</div></div>
-        <div class="stat"><div class="value">8.73</div><div class="label">Semester 2 SGPA</div></div>
-        <div class="stat"><div class="value">8.84</div><div class="label">Semester 3 SGPA</div></div>
-        <div class="stat"><div class="value">8.35</div><div class="label">Semester 4 SGPA</div></div>
+
+        <div class="stat">
+          <div class="value">8.55</div>
+          <div class="label">Semester 1 SGPA</div>
+        </div>
+
+        <div class="stat">
+          <div class="value">8.73</div>
+          <div class="label">Semester 2 SGPA</div>
+        </div>
+
+        <div class="stat">
+          <div class="value">8.84</div>
+          <div class="label">Semester 3 SGPA</div>
+        </div>
+
+        <div class="stat">
+          <div class="value">8.35</div>
+          <div class="label">Semester 4 SGPA</div>
+        </div>
+
       </div>
+
     </section>
 
+
+    <!-- SKILLS -->
     <section id="skills">
+
       <div class="section-head">
-        <div><h2>Technical skills</h2><p>Current stack and programming languages.</p></div>
+
+        <div>
+
+          <h2>
+            Technical skills
+          </h2>
+
+          <p>
+            Current stack and programming languages.
+          </p>
+
+        </div>
+
       </div>
+
+
       <div class="card">
+
         <div class="skill-wrap">
-          <span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
-          <span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span>
-          <span class="chip">MERN Stack</span><span class="chip">MongoDB</span><span class="chip">SQL</span>
-          <span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">EJS</span>
-          <span class="chip">Mongoose</span><span class="chip">Git</span><span class="chip">GitHub</span>
+
+          <span class="chip">C</span>
+          <span class="chip">C++</span>
+          <span class="chip">Java</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">MERN Stack</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Express.js</span>
+          <span class="chip">EJS</span>
+          <span class="chip">Mongoose</span>
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- PROJECTS -->
     <section id="projects">
+
       <div class="section-head">
-        <div><h2>Project dashboard</h2><p>Projects you have built or are currently developing.</p></div>
+
+        <div>
+
+          <h2>
+            Project dashboard
+          </h2>
+
+          <p>
+            Projects you have built or are currently developing.
+          </p>
+
+        </div>
+
       </div>
+
+
       <div class="projects">
+
+
+        <!-- WANDERLUST -->
         <article class="project">
+
           <div class="project-top">
-            <h3>Wanderlust — Airbnb-style Web App</h3>
-            <span class="status progress">In Progress</span>
+
+            <h3>
+              Wanderlust — Airbnb-style Web App
+            </h3>
+
+            <span class="status">
+              Completed
+            </span>
+
           </div>
-          <p>Full-stack listing application with property pages, MongoDB-backed data and review functionality under active development.</p>
-          <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">EJS</span><span class="tag">Mongoose</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">Explore on GitHub →</a>
+
+
+          <p>
+            Completed full-stack property-listing application with
+            MongoDB-backed data, reviews, authentication, cloud image
+            uploads and interactive maps.
+          </p>
+
+
+          <div class="tags">
+
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">EJS</span>
+            <span class="tag">Mongoose</span>
+
+          </div>
+
+
+          <div class="project-actions">
+
+            <a
+              class="project-btn primary-project-btn"
+              href="https://wanderlust-71oj.onrender.com"
+              target="_blank"
+            >
+              Live Demo ↗
+            </a>
+
+            <a
+              class="project-btn"
+              href="https://github.com/Arpit-Pundir/Wanderlust"
+              target="_blank"
+            >
+              GitHub ↗
+            </a>
+
+          </div>
+
         </article>
 
+
+        <!-- STAYEASE -->
         <article class="project">
+
           <div class="project-top">
-            <h3>StayEase</h3>
-            <span class="status">Built</span>
+
+            <h3>
+              StayEase
+            </h3>
+
+            <span class="status">
+              Built
+            </span>
+
           </div>
-          <p>Hotel-discovery / booking-style frontend project with search-oriented UI and JavaScript-driven interactions.</p>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">API</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir/STAYEASE" target="_blank" rel="noreferrer">View repository →</a>
+
+          <p>
+            Hotel-discovery / booking-style frontend project with
+            search-oriented UI and JavaScript-driven interactions.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">API</span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir/STAYEASE"
+            target="_blank"
+          >
+            View repository →
+          </a>
+
         </article>
 
+
+        <!-- MONGODB CHAT -->
         <article class="project">
+
           <div class="project-top">
-            <h3>MongoDB Chat App</h3>
-            <span class="status">Built</span>
+
+            <h3>
+              MongoDB Chat App
+            </h3>
+
+            <span class="status">
+              Built
+            </span>
+
           </div>
-          <p>CRUD chat application built to practice Express routes, EJS rendering, Mongoose models and MongoDB persistence.</p>
-          <div class="tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">EJS</span><span class="tag">Mongoose</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir/MONGO3" target="_blank" rel="noreferrer">View repository →</a>
+
+          <p>
+            CRUD chat application built to practice Express routes,
+            EJS rendering, Mongoose models and MongoDB persistence.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">MongoDB</span>
+            <span class="tag">Express</span>
+            <span class="tag">EJS</span>
+            <span class="tag">Mongoose</span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir/MONGO3"
+            target="_blank"
+          >
+            View repository →
+          </a>
+
         </article>
 
+
+        <!-- TIC TAC TOE -->
         <article class="project">
+
           <div class="project-top">
-            <h3>Tic-Tac-Toe</h3>
-            <span class="status">Built</span>
+
+            <h3>
+              Tic-Tac-Toe
+            </h3>
+
+            <span class="status">
+              Built
+            </span>
+
           </div>
-          <p>Console-based game project focused on control flow, game-state handling and programming logic.</p>
-          <div class="tags"><span class="tag">C++</span><span class="tag">Logic</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">Explore GitHub →</a>
+
+          <p>
+            Console-based game project focused on control flow,
+            game-state handling and programming logic.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">C++</span>
+            <span class="tag">Logic</span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir"
+            target="_blank"
+          >
+            Explore GitHub →
+          </a>
+
         </article>
 
+
+        <!-- CALCULATOR -->
         <article class="project">
+
           <div class="project-top">
-            <h3>Calculator</h3>
-            <span class="status">Built</span>
+
+            <h3>
+              Calculator
+            </h3>
+
+            <span class="status">
+              Built
+            </span>
+
           </div>
-          <p>A compact programming project for handling basic arithmetic operations and user input.</p>
-          <div class="tags"><span class="tag">Programming Fundamentals</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">Explore GitHub →</a>
+
+          <p>
+            A compact programming project for handling basic arithmetic
+            operations and user input.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">
+              Programming Fundamentals
+            </span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir"
+            target="_blank"
+          >
+            Explore GitHub →
+          </a>
+
         </article>
 
+
+        <!-- RANDOM GUESS -->
         <article class="project">
+
           <div class="project-top">
-            <h3>Random Guess Game</h3>
-            <span class="status">Built</span>
+
+            <h3>
+              Random Guess Game
+            </h3>
+
+            <span class="status">
+              Built
+            </span>
+
           </div>
-          <p>Number-guessing mini game built to practice conditionals, loops, state and user interaction.</p>
-          <div class="tags"><span class="tag">Programming Fundamentals</span><span class="tag">Game Logic</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">Explore GitHub →</a>
+
+          <p>
+            Number-guessing mini game built to practice conditionals,
+            loops, state and user interaction.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">
+              Programming Fundamentals
+            </span>
+
+            <span class="tag">
+              Game Logic
+            </span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir"
+            target="_blank"
+          >
+            Explore GitHub →
+          </a>
+
         </article>
 
+
+        <!-- SPOTIFY -->
         <article class="project">
+
           <div class="project-top">
-            <h3>Spotify Frontend Clone</h3>
-            <span class="status">Frontend Only</span>
+
+            <h3>
+              Spotify Frontend Clone
+            </h3>
+
+            <span class="status">
+              Frontend Only
+            </span>
+
           </div>
-          <p>Spotify-inspired static interface built to practice layout, component styling and responsive front-end structure.</p>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Frontend</span></div>
-          <a class="project-link" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">Explore GitHub →</a>
+
+          <p>
+            Spotify-inspired static interface built to practice layout,
+            component styling and responsive front-end structure.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Frontend</span>
+
+          </div>
+
+          <a
+            class="project-link"
+            href="https://github.com/Arpit-Pundir"
+            target="_blank"
+          >
+            Explore GitHub →
+          </a>
+
         </article>
+
+
       </div>
+
     </section>
 
+
+    <!-- EDUCATION -->
     <section id="education">
+
       <div class="section-head">
-        <div><h2>Education</h2><p>Academic background.</p></div>
+
+        <div>
+
+          <h2>
+            Education
+          </h2>
+
+          <p>
+            Academic background.
+          </p>
+
+        </div>
+
       </div>
+
+
       <div class="edu-grid">
+
         <div class="card">
+
+
           <div class="edu-row">
-            <div><strong>B.Tech — Computer Science & Engineering</strong><span class="muted">Ajay Kumar Garg Engineering College (AKGEC) · 2024–2028</span></div>
-            <div class="score">Ongoing</div>
+
+            <div>
+
+              <strong>
+                B.Tech — Computer Science & Engineering
+              </strong>
+
+              <span class="muted">
+                Ajay Kumar Garg Engineering College (AKGEC) · 2024–2028
+              </span>
+
+            </div>
+
+            <div class="score">
+              Ongoing
+            </div>
+
           </div>
+
+
           <div class="edu-row">
-            <div><strong>Class XII — ISC</strong><span class="muted">Senior secondary education</span></div>
-            <div class="score">88.6%</div>
+
+            <div>
+
+              <strong>
+                Class XII — ISC
+              </strong>
+
+              <span class="muted">
+                Senior secondary education
+              </span>
+
+            </div>
+
+            <div class="score">
+              88.6%
+            </div>
+
           </div>
+
+
           <div class="edu-row">
-            <div><strong>Class X — ICSE</strong><span class="muted">Secondary education</span></div>
-            <div class="score">95.45%</div>
+
+            <div>
+
+              <strong>
+                Class X — ICSE
+              </strong>
+
+              <span class="muted">
+                Secondary education
+              </span>
+
+            </div>
+
+            <div class="score">
+              95.45%
+            </div>
+
           </div>
+
+
         </div>
+
+
         <div class="card">
-          <h3 style="margin-top:0">Profile links</h3>
-          <p class="muted">Use these on your resume, LinkedIn Featured section, GitHub Pages, internship applications and QR-based portfolios.</p>
+
+          <h3 style="margin-top:0">
+            Profile links
+          </h3>
+
+          <p class="muted">
+            Use these on your resume, LinkedIn Featured section,
+            GitHub Pages, internship applications and QR-based portfolios.
+          </p>
+
           <div class="cta">
-            <a class="btn primary" href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">github.com/Arpit-Pundir</a>
-            <a class="btn secondary" href="https://in.linkedin.com/in/arpit-pundir-764128317" target="_blank" rel="noreferrer">LinkedIn Profile</a>
+
+            <a
+              class="btn primary"
+              href="https://github.com/Arpit-Pundir"
+              target="_blank"
+            >
+              github.com/Arpit-Pundir
+            </a>
+
+            <a
+              class="btn secondary"
+              href="https://in.linkedin.com/in/arpit-pundir-764128317"
+              target="_blank"
+            >
+              LinkedIn Profile
+            </a>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
+
+
   </main>
 
+
   <footer class="shell">
-    <strong>Arpit Pundir</strong> · CSE · AKGEC
+
+    <strong>
+      Arpit Pundir
+    </strong>
+
+    · CSE · AKGEC
+
     <div class="foot-links">
-      <a href="https://github.com/Arpit-Pundir" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://in.linkedin.com/in/arpit-pundir-764128317" target="_blank" rel="noreferrer">LinkedIn</a>
+
+      <a
+        href="https://github.com/Arpit-Pundir"
+        target="_blank"
+      >
+        GitHub
+      </a>
+
+      <a
+        href="https://in.linkedin.com/in/arpit-pundir-764128317"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
+
     </div>
+
   </footer>
+
+
 </body>
 </html>
